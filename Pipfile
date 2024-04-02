@@ -11,6 +11,8 @@ grasshopper-stubs = "*"
 ladybug-rhino = "*"
 pipdeptree = "*"
 ladybug = "*"
+ladybug-radiance = "*"
+lbt-recipes = "*"
 
 [dev-packages]
 ipykernel = "*"

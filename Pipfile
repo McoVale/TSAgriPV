@@ -13,6 +13,7 @@ pipdeptree = "*"
 ladybug = "*"
 ladybug-radiance = "*"
 lbt-recipes = "*"
+matplotlib = "*"
 
 [dev-packages]
 ipykernel = "*"

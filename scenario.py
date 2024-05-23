@@ -8,11 +8,16 @@ class Scenario:
         Initialise l'objet Scenario avec un tableau de 24 colonnes (heures) et 12 lignes (mois),
         par défaut rempli de False. Le tableau peut être initialisé à partir d'un fichier Excel.
         """
-        if file_path is "" :
-            self.scenario = np.full((24,12), False, dtype=bool)
-        else:
-            df = pd.read_excel(file_path, header=None, usecols=range(1, 25))
-            self.scenario = df.to_numpy(dtype=bool)
+        
+        self.scenario = np.full((12,24), False, dtype=bool)
+        if file_path is not "" :
+
+            df = pd.read_excel(file_path, header=0, usecols=range(1, 25))
+            for i in range(df.shape[0]):  # Pour chaque ligne
+                for j in range(df.shape[1]):  # Pour chaque colonne
+                    if df.iloc[i, j] == 0:
+                        self.scenario[i, j] = True
+
 
     def count_erased_hours(self):
         """

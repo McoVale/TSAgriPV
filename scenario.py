@@ -9,14 +9,14 @@ class Scenario:
         par défaut rempli de False. Le tableau peut être initialisé à partir d'un fichier Excel.
         """
         
-        self.scenario = np.full((12,24), False, dtype=bool)
+        self.scenario = np.full((12,24), True, dtype=bool)
         if file_path is not "" :
 
             df = pd.read_excel(file_path, header=0, usecols=range(1, 25))
             for i in range(df.shape[0]):  # Pour chaque ligne
                 for j in range(df.shape[1]):  # Pour chaque colonne
                     if df.iloc[i, j] == 0:
-                        self.scenario[i, j] = True
+                        self.scenario[i, j] = False
 
 
     def count_erased_hours(self):

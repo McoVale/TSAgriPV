@@ -15,6 +15,7 @@ ladybug-radiance = "*"
 lbt-recipes = "*"
 matplotlib = "*"
 openpyxl = "*"
+rpy2 = "*"
 
 [dev-packages]
 ipykernel = "*"

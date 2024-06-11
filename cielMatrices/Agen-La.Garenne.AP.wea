@@ -4,5 +4,5 @@ longitude -0.59
 time_zone -15
 site_elevation 69.0
 weather_data_file_units 1
-1 24 7.500 0 0
-1 24 8.500 0 8
+12 31 13.500 753 67
+12 31 14.500 686 60

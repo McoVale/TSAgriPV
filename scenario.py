@@ -9,21 +9,21 @@ class Scenario:
         par défaut rempli de False. Le tableau peut être initialisé à partir d'un fichier Excel.
         """
         
-        self.scenario = np.full((12,24), True, dtype=bool)
+        self.scenario = np.full((12,24), 1, dtype=int)
         if file_path is not "" :
 
             df = pd.read_excel(file_path, header=0, usecols=range(1, 25))
             for i in range(df.shape[0]):  # Pour chaque ligne
                 for j in range(df.shape[1]):  # Pour chaque colonne
                     if df.iloc[i, j] == 0:
-                        self.scenario[i, j] = False
+                        self.scenario[i, j] = 0
 
 
     def count_erased_hours(self):
         """
-        Renvoie le nombre d'heures effacées, c'est-à-dire le nombre de True dans le tableau.
+        Renvoie le nombre d'heures effacées, c'est-à-dire le nombre de 0 dans le tableau.
         """
-        return np.sum(self.scenario)
+        return 288 - np.sum(self.scenario)
     
     def __str__(self):
         """
@@ -40,11 +40,11 @@ if __name__ == "__main__":
     print("Nombre d'heures effacées :", scenario_default.count_erased_hours())
 
     # Initialiser à partir d'un tableau personnalisé
-    custom_scenario = np.random.choice([True, False], size=(12, 24))
-    scenario_custom = Scenario(custom_scenario)
-    print("\nScénario personnalisé :")
-    print(scenario_custom)
-    print("Nombre d'heures effacées :", scenario_custom.count_erased_hours())
+    # custom_scenario = np.random.choice([True, False], size=(12, 24))
+    # scenario_custom = Scenario(custom_scenario)
+    # print("\nScénario personnalisé :")
+    # print(scenario_custom)
+    # print("Nombre d'heures effacées :", scenario_custom.count_erased_hours())
 
     # Initialiser à partir d'un fichier Excel
     # scenario_from_excel = Scenario()

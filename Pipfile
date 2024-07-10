@@ -16,6 +16,9 @@ lbt-recipes = "*"
 matplotlib = "*"
 openpyxl = "*"
 rpy2 = "*"
+honeybee-grasshopper-radiance = "*"
+honeybee = "*"
+honeybee-radiance = "*"
 
 [dev-packages]
 ipykernel = "*"

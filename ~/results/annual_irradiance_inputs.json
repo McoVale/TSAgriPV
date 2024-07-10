@@ -1,0 +1,11 @@
+{
+    "wea": "Agen-La.Garenne.AP_0_8759.wea", 
+    "min-sensor-count": 200, 
+    "north": 0.0, 
+    "output-type": "solar", 
+    "cpu-count": 7, 
+    "model": "unnamed_16f830a1.hbjson", 
+    "grid-filter": "*", 
+    "radiance-parameters": "-ab 2 -ad 5000 -lw 2e-05 -dr 0", 
+    "timestep": 1
+}

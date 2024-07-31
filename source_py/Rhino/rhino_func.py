@@ -11,7 +11,7 @@ import System
 import Rhino.Display
 import Rhino.Geometry as rg
 from Grasshopper import DataTree
-import Grasshopper.Kernel.Types as gh
+from ladybug_rhino.togeometry import to_mesh3d
 import array
 
 def objectify_output(object_name, output_data):

@@ -3,8 +3,9 @@ import rhinoinside
 rhinoinside.load()
 
 import os
-from honeybee_radiance.recipe import Recipe
-from honeybee_radiance.results import recipe_result
+from lbt_recipes.recipe import Recipe
+from lbt_recipes.settings import RecipeSettings
+from .rhino_func import recipe_result
 
 def annual_irradiance(_model, _wea, _timestep_ = 1, visible_ = False, north_ = 0, grid_filter_ = None, radiance_par_ = "-ab 2 -ad 5000 -lw 2e-05", run_settings_ = None):
     """

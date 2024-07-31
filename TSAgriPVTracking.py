@@ -9,7 +9,7 @@ import pandas as pd
 PARAMS = {}
 HOYS = np.arange(0, 8760)
 start_date = pd.Timestamp('2023-01-01')
-timestamps = [start_date + pd.Timedelta(hours=int(hour)) for hour in hoys]
+timestamps = [start_date + pd.Timedelta(hours=int(hour)) for hour in HOYS]
 TAB_1 = pd.DataFrame()
 TAB_1['Month-Day-Hour'] = [ts.strftime('%m-%d-%H') for ts in timestamps]
 OUTPUT_PATH = "bdd_irr.xlsx"
@@ -36,14 +36,19 @@ def general_settings():
 
 if __name__ == "__main__":
 
+    #Settings
     PARAMS = import_STICS_settings()
     general_settings()
+
+    #Geom + run irradiance
     rhino_geom.run_annual_irradiance_simulation(angles=PARAMS['PY_LIST_ANGLES'], wea=PARAMS['PY_wea'],tab_1=TAB_1,hoys=HOYS,
                                                 output_path=OUTPUT_PATH,FINESSE=PARAMS['PY_FINESSE'],GRID_SIZE=PARAMS['PY_GRID_SIZE'],
                                                 ENTRAXE=PARAMS['PY_ENTRAXE'],RAMPANT=PARAMS['PY_RAMPANT'],NB_PVP_RANGS=PARAMS['PY_NB_PVP_RANGS'],
                                                 ANGLE_ORIENTATION=PARAMS['PY_ANGLE_ORIENTATION'],TYPE_PANEL=PARAMS['PY_TYPE_PANEL'],
                                                 LARGEUR_BANDE=PARAMS['PY_LARGEUR_BANDE'],LARGEUR_AVIDE=PARAMS['PY_LARGEUR_AVIDE'],
                                                 LONGUEUR_PVP=PARAMS['PY_LONGUEUR_PVP'],HAUTEUR=PARAMS['PY_HAUTEUR'])
-    # valeur = mon_dictionnaire[cle]
+    
+    #Excel
+    
 
     print("Fin du main")

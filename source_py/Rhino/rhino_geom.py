@@ -29,8 +29,8 @@ from honeybee.typing import clean_and_id_string
 #from lbt_recipes.recipe import Recipe
 from lbt_recipes.settings import RecipeSettings
 
-from rhino_func import longest_list, objectify_output, de_objectify_output, text_objects, to_gridded_mesh3d_perso, recipe_result, list_to_data_tree
-from rhino_irr import annual_irradiance
+from .rhino_func import longest_list, to_gridded_mesh3d_perso
+from .rhino_irr import annual_irradiance
 
 from lbt_recipes.version import check_radiance_date
 # check the installed Radiance date and get the path to the gemdaymtx executable
@@ -285,7 +285,7 @@ def brep_to_face(_geo, _name_ = [], _type_ = None, _bc_ = None):
         bc = _bc_
         
         # Convert geometry to Face3D
-        lb_faces = Face3D.from_geometry(geo)
+        lb_faces = to_face3d(geo)
         for i, lb_face in enumerate(lb_faces):
             face_name = '{}_{}'.format(name, i) if len(lb_faces) > 1 else name
             hb_face = Face(face_name, lb_face, typ, bc)
@@ -320,7 +320,7 @@ def brep_to_pts_mesh(_geometry, _grid_size, _offset_dist_ = 1, quad_only_ = Fals
     # check the input and generate the mesh.
     _offset_dist_ = _offset_dist_ or 0
     if quad_only_:  # use Ladybug's built-in meshing methods
-        lb_faces = Face3D.from_geometry(_geometry)
+        lb_faces = to_face3d(_geometry)
         try:
             x_axis = to_vector3d(quad_only_)
             lb_faces = [Face3D(f.boundary, Plane(f.normal, f[0], x_axis), f.holes)
@@ -374,7 +374,13 @@ def convert_to_grid(_positions, _name_ = '', _directions_ = [], mesh_ = None, ba
         grid: A SensorGrid object that can be used in a grid-based recipe.
     """
     # Set the default name and process the points to tuples
-    pts = [(pt.X, pt.Y, pt.Z) for pt in _positions]
+    print(type(_positions))
+    pts = []
+    for pt in _positions:
+        print(f"Point: {pt}")  # Ajoutez des print pour déboguer ou afficher des informations
+        print("type point :",type(pt))
+        print(f"X: {pt.x}, Y: {pt.y}, Z: {pt.z}")
+        pts.append((pt.x, pt.y, pt.z))
 
     # Create the sensor grid object
     id = _name_

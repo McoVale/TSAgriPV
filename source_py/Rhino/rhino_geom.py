@@ -374,12 +374,8 @@ def convert_to_grid(_positions, _name_ = '', _directions_ = [], mesh_ = None, ba
         grid: A SensorGrid object that can be used in a grid-based recipe.
     """
     # Set the default name and process the points to tuples
-    print(type(_positions))
     pts = []
     for pt in _positions:
-        print(f"Point: {pt}")  # Ajoutez des print pour déboguer ou afficher des informations
-        print("type point :",type(pt))
-        print(f"X: {pt.x}, Y: {pt.y}, Z: {pt.z}")
         pts.append((pt.x, pt.y, pt.z))
 
     # Create the sensor grid object

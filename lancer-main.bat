@@ -1,3 +1,3 @@
 @echo off
-pipenv run python main.py
+pipenv run python TSAgriPVTracking.py
 pause

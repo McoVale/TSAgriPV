@@ -50,7 +50,7 @@ from rpy2.robjects import globalenv
 
 ###Imports inside R
 r.source("R_related/Rfunctions.R")
-r_change_setting = globalenv['change_setting']
+r_change_setting = globalenv['change_STICS_setting']
 
 def read_input_excel():
     """

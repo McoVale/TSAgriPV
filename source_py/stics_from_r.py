@@ -32,11 +32,6 @@ def find_r_installation():
     return None
 
 r_path = find_r_installation()
-if r_path:
-    print(f"R is installed at: {r_path}")
-else:
-    print("R installation not found.")
-
 os.environ['R_HOME'] = r_path
 ####------------------------
 ####------------------------
@@ -55,7 +50,7 @@ f_change_scenar = globalenv['change_scenar']
 
 def gen_weatherfile_from_epw(epw_file_path, start_date):
     """
-    Read an EPW file to create and export weather data files.
+    Read an EPW file to create and export csv weather data files that goes in STICS.
 
     Args:
         epw_file_path (str): Path to the EPW file.
@@ -144,6 +139,7 @@ def stics_simulation(source_dir, workspace_path, javastics_path, usm_name, data_
     # Get the first simulation results
     # Read the CSV file
     results_simu = pd.read_csv("R_related/Rproject/mod_s"+usm_name+".sti", sep=";")
+    results_simu.to_csv('results/results_simu1.csv', sep=';', index=False)
     pdsfruitfraisSim1 = results_simu['pdsfruitfrais'].max()
 
     # Change weather file
@@ -155,6 +151,7 @@ def stics_simulation(source_dir, workspace_path, javastics_path, usm_name, data_
     # Get the second simulation results
     # Read the CSV file
     results_simu2 = pd.read_csv("R_related/Rproject/mod_s"+usm_name+".sti", sep=";")
+    results_simu2.to_csv('results/results_simu2.csv', sep=';', index=False)
     pdsfruitfraisSim2 = results_simu2['pdsfruitfrais'].max()
 
     pandas2ri.deactivate()

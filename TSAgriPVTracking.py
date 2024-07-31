@@ -59,6 +59,7 @@ if __name__ == "__main__":
 
     # Settings
     PARAMS = import_STICS_settings()
+    print(PARAMS)
     general_settings()
 
     # Run Geom + Irradiance if wanted (PY_RHINO_SIM == TRUE)

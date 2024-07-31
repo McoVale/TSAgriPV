@@ -37,7 +37,7 @@ if r_path:
     print(f"R is installed at: {r_path}")
 else:
     print("R installation not found.")
-
+    
 os.environ['R_HOME'] = r_path
 ####------------------------
 ####------------------------

@@ -25,6 +25,7 @@ def import_STICS_settings():
 def general_settings():
     PARAMS['PY_TYPE_PANEL'] = bool(PARAMS['PY_TYPE_PANEL'])
     PARAMS['PY_DO_RHINO_SIM'] = bool(PARAMS['PY_DO_RHINO_SIM'])
+    PARAMS['PY_epw_name'] = "DATA/"+PARAMS['PY_epw_name']
     PARAMS['PY_wea'] = Wea.from_epw_file(PARAMS['PY_epw_name'], PARAMS['PY_timestep_wea'])
     PARAMS['PY_LARGEUR_AVIDE'] = (PARAMS['PY_RAMPANT']-4*PARAMS['PY_LARGEUR_BANDE'])/3
     PARAMS['PY_NB_PVP_RANGS'] = int(PARAMS['PY_GRID_SIZE'] / PARAMS['PY_ENTRAXE'])

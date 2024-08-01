@@ -62,14 +62,8 @@ def read_input_excel():
     Returns:
     pd.DataFrame: A DataFrame containing the selected columns and rows from the Excel file.
     """
-    # Get the absolute path of the directory containing this script
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-
-    # Construct the relative path to the Excel file
-    excel_path = os.path.join(script_dir,'..', 'inputs.xlsx')
-
     # Read the Excel file
-    df = pd.read_excel(excel_path, usecols=[1, 2], skiprows=5)
+    df = pd.read_excel(os.path.join('DATA', 'inputs.xlsx'), usecols=[1, 2], skiprows=5)
     df.columns = ['Valeur', 'Cle']  
 
     return df

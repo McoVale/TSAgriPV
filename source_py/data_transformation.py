@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from source_py.scenario import Scenario
+import os
 
 def import_scenario():
     """
@@ -12,7 +13,7 @@ def import_scenario():
     Returns:
         Scenario: A Scenario object created from the data in the Excel file.
     """
-    return Scenario(file_path="DATA/sc.xlsx")
+    return Scenario(file_path="DATA/scenario.xlsx")
     
 def import_bdd_irr(input_path):
     """
@@ -77,7 +78,7 @@ def creer_tab_effacement(sc, bdd_irr, pvsyst, step_angle, data_name):
 
     # Add control values to tab_eff
     tab_eff['temoin'] = bdd_irr['temoin']
-
+    
     tab_eff.to_excel("DATA/tab_effacement_"+data_name+".xlsx", index=False, header=True)
 
     return None
@@ -94,7 +95,7 @@ def creer_daily_ratios(data_name):
         None: The function saves the calculated daily ratios to CSV files.
     """
 
-    tab_eff1 = pd.read_excel("tab_effacement_"+data_name+".xlsx")
+    tab_eff1 = pd.read_excel("DATA/tab_effacement_"+data_name+".xlsx")
     # Extract the date from the 'hoys' column
     tab_eff1['Date'] = tab_eff1['hoys'].str[:5]
    

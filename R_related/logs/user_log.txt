@@ -1,0 +1,2 @@
+[29/07/24]-[10:47:43] - Launching Javastics
+[29/07/24]-[10:47:48] - Exit of JavaStics 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<usms version="10.0">
+  <usm nom="VignePioGre">
+    <datedebut>213</datedebut>
+    <datefin>730</datefin>
+    <finit>VignePioGre_ini.xml</finit>
+    <nomsol>VignePioGre</nomsol>
+    <fstation>Mtp_sta.xml</fstation>
+    <fclim1>weatherFile_TEST.2022</fclim1>
+    <fclim2>weatherFile_TEST.2023</fclim2>
+    <culturean>0</culturean>
+    <nbplantes>1</nbplantes>
+    <codesimul>0</codesimul>
+    <plante dominance="1">
+      <fplt>vine_GRENAC_plt.xml</fplt>
+      <ftec>VignePioGre_tec.xml</ftec>
+      <flai>null</flai>
+      <fobs>null</fobs>
+    </plante>
+    <plante dominance="2">
+      <fplt>null</fplt>
+      <ftec>null</ftec>
+      <flai>null</flai>
+      <fobs>null</fobs>
+    </plante>
+  </usm>
+</usms>
+

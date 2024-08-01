@@ -1,7 +1,4 @@
 *.3dm*
-*.xlsx
-*.xlsm
 *.gh
-*R_related*
 JavaSTICS*
-Annual_Irr_Results*
+*results*

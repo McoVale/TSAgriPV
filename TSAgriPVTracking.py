@@ -53,7 +53,7 @@ def run_stics_simu():
     res1 = stics.stics_simulation(source_dir="R_related/weatherFilesSource/", workspace_path=R_STICS_WORKSPACE,
                            javastics_path= JAVASTICS_PATH, usm_name=PARAMS['PY_USM_NAME'],
                            data_name=PARAMS['PY_DATA_NAME'])
-    print("récoltes ",res1," t/ha")
+    print("Récoltes indicatives :\n Zone témoin : ",res1[0]," t/ha ; Zone d'étude avec panneaux : ", res1[1], " t/ha."  )
     return True
 
 if __name__ == "__main__":
@@ -64,7 +64,6 @@ if __name__ == "__main__":
     general_settings()
 
     # Run Geom + Irradiance if wanted (PY_RHINO_SIM == TRUE)
-    # print(PARAMS['PY_DO_RHINO_SIM'])
     if PARAMS['PY_DO_RHINO_SIM'] == True :
         rhino_geom.run_annual_irradiance_simulation(angles=PARAMS['PY_LIST_ANGLES'], wea=PARAMS['PY_wea'],tab_1=TAB_1,hoys=HOYS,
                                                     output_path=PARAMS['PY_PATH_BDD_IRR'],FINESSE=PARAMS['PY_FINESSE'],GRID_SIZE=PARAMS['PY_GRID_SIZE'],

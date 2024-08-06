@@ -3,41 +3,6 @@ library(SticsRFiles)
 library(SticsOnR)
 library(utils)
 
-find_and_read_csv <- function(data_name, search_directory = ".") {
-  # Construct the filename and file path
-  file_name <- paste0("ratios_", data_name, ".csv")
-  
-  # Print the filename for reference
-  print(paste("Filename:", file_name))
-  
-  # List all files in the search directory and subdirectories
-  files <- list.files(search_directory, pattern = file_name, recursive = TRUE, full.names = TRUE)
-  
-  if (length(files) == 0) {
-    stop(paste("File not found:", file_name))
-  } else if (length(files) > 1) {
-    warning(paste("Multiple files found with name:", file_name))
-  }
-  
-  # Use the first file found (assuming unique or handle multiple if necessary)
-  file_path <- files[1]
-  
-  # Display the relative and absolute paths
-  relative_path <- file_path
-  absolute_path <- normalizePath(file_path)
-  
-  print(paste("Relative file path:", relative_path))
-  print(paste("Absolute file path:", absolute_path))
-  
-  # Read the CSV file
-  data <- read.csv(file = file_path, header = TRUE)
-  
-  # Print the first few rows of the data for verification
-  print(head(data))
-  
-  return(data)
-}
-
 #' Change the weather scenario based on irradiance ratios.
 #'
 #' This function reads irradiance ratios from a CSV file and applies these ratios 
@@ -50,7 +15,7 @@ find_and_read_csv <- function(data_name, search_directory = ".") {
 #' @return None. The function writes new weather files to the 'Rproject' directory.
 change_scenar <- function(data_name) {
   # Construct the file path for the ratio data
-  ratio_file_path <- paste0("DATA/ratios_", data_name, ".csv")
+  ratio_file_path <- paste0("DATA/", data_name,"/ratios_", data_name, ".csv")
   
   normalized_path <- normalizePath(ratio_file_path)
   

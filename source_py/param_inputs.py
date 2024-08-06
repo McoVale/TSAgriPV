@@ -1,7 +1,7 @@
 import os
-import numpy as np
 import pandas as pd
 import ast
+from shutil import copy
 
 ####------------------------
 ####--R localization setup--
@@ -51,6 +51,36 @@ from rpy2.robjects import globalenv
 ###Imports inside R
 r.source("R_related/Rfunctions.R")
 r_change_setting = globalenv['change_STICS_setting']
+
+def settings_dirs(data_name):
+    """
+    Organize I/O dir for the current project.
+
+    This function constructs the path to an Excel file named 'inputs.xlsx' located in the same directory
+    as this script, reads the file, and returns a DataFrame containing specific columns and rows.
+
+    Parameters:
+    data_name (str): The name of the current project
+
+    Returns:
+    boolean : True if folder was already here, False if it just has been created.
+    """
+    dir = os.path.join("DATA",data_name)
+    # Thoses settings are relevant only once, if the corresponding folder are already created we dont do nothing here
+    if os.path.isdir(dir):
+        print("Settings : dossier de projets déjà créé.")
+        return False
+    else :
+        # Create new directories to receive current project data
+        os.makedirs(dir, exist_ok=True)
+        print("Settings : dossier de projet créé : ",dir)
+        file_list = [f for f in os.listdir("DATA/") if os.path.isfile(os.path.join("DATA/", f))]
+        # Copy input files from DATA/ folder to project folder (DATA/data_name/)
+        for f in file_list:
+            copy("DATA/"+f, dir)
+            print("Copying", f, "in", dir, ".")
+        return True
+
 
 def read_input_excel():
     """

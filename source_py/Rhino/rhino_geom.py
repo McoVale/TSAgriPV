@@ -504,5 +504,6 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
         print(f"Le dossier '{path_resultsHB_AI + '_CT'}' n'existe pas.")
 
     # Export results to Excel
+    print(output_path)
     tab_1.to_excel(output_path, index=False, header=True)
 ##

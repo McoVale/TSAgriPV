@@ -139,7 +139,7 @@ def stics_simulation(source_dir, workspace_path, javastics_path, usm_name, data_
     # Get the first simulation results
     # Read the CSV file
     results_simu = pd.read_csv("R_related/Rproject/mod_s"+usm_name+".sti", sep=";")
-    results_simu.to_csv('results/results_simu1.csv', sep=';', index=False)
+    results_simu.to_csv('DATA/'+data_name+'/results_simu1.csv', sep=';', index=False)
     pdsfruitfraisSim1 = results_simu['pdsfruitfrais'].max()
 
     # Change weather file
@@ -151,7 +151,7 @@ def stics_simulation(source_dir, workspace_path, javastics_path, usm_name, data_
     # Get the second simulation results
     # Read the CSV file
     results_simu2 = pd.read_csv("R_related/Rproject/mod_s"+usm_name+".sti", sep=";")
-    results_simu2.to_csv('results/results_simu2.csv', sep=';', index=False)
+    results_simu2.to_csv('DATA/'+data_name+'/results_simu2.csv', sep=';', index=False)
     pdsfruitfraisSim2 = results_simu2['pdsfruitfrais'].max()
 
     pandas2ri.deactivate()

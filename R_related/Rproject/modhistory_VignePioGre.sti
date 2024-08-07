@@ -1,5 +1,5 @@
  -----------------------------------------------------------------------------------------
- Stics history file Creation date: 2024/08/06-11:26:40
+ Stics history file Creation date: 2024/08/07-11:52:08
  STICS Version: 10.1.0_2024-01-12                                 
  -----------------------------------------------------------------------------------------
  
@@ -127,7 +127,7 @@
  P_effirr    1.00000000    
  nap            0
  P_codlocirrig            2
- P_profmes   120.000000    
+ P_profmes   60.0000000    
  P_concirr    0.00000000    
  napN            0
  P_codlocferti            1
@@ -147,7 +147,7 @@
     
  PLANT PARAMETERS NEEDED FOR THE SIMULATION
  *********************************************************
- P_fplt vine_GRENAC_plt.xml
+ P_fplt vine_PINCC_plt.xml
  P_codeplante vig
  dicotyledon            2
  P_tdmin    10.0000000    
@@ -279,17 +279,17 @@
  stadebbchdebdes85
  stadebbchrec99
  stadebbchfindorm01
- P_codevar Grenac
+ P_codevar Pinot
  P_stlevamf    25.0000000    
- P_stamflax    1123.00000    
- P_stlevdrp    363.299988    
- P_stflodrp    50.0000000    
- P_stdrpdes    96.0000000    
- P_jvc    102.000000    
- P_stdordebour    9174.29980    
+ P_stamflax    941.700012    
+ P_stlevdrp    319.200012    
+ P_stflodrp    53.0000000    
+ P_stdrpdes    93.0000000    
+ P_jvc    103.000000    
+ P_stdordebour    7468.89990    
  P_adens    0.00000000    
  P_bdens    1.00000000    
- P_hautbase   0.600000024    
+ P_hautbase   0.500000000    
  P_hautmax    2.50000000    
  P_khaut  0.699999988    
  P_durvieF    400.000000    
@@ -301,16 +301,16 @@
  P_teopt    25.0000000    
  P_slamax    235.000000    
  P_tigefeuil   0.899999976    
- P_pgrainmaxi    1.96000004    
+ P_pgrainmaxi    1.86000001    
  P_vitpropsucre    2.89999996E-03
  P_vitprophuile    0.00000000    
  P_vitirazo    4.00000019E-03
- P_deshydbase    1.59000000E-03
- P_afruitpot    1.14999998    
- P_dureefruit    1472.00000    
- P_stdrpnou    91.0000000    
+ P_deshydbase    1.20000006E-03
+ P_afruitpot    2.36999989    
+ P_dureefruit    1289.00000    
+ P_stdrpnou    88.0000000    
  number of inflorescences =  prescribed
- P_nbinflo    15.0000000    
+ P_nbinflo    21.0000000    
  P_croirac    0.00000000    
  P_tgeljuv10   -2.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
  P_tgelveg10   -2.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000       0.00000000    
@@ -886,7 +886,7 @@
  the vapor pressure is missing and has been calculated with tmin and the parameter P_corecTrosee
  the vapor pressure is missing and has been calculated with tmin and the parameter P_corecTrosee
  problem with your profile output dates --> they have been recalculated
-Initial values over the soil depth (120 cm):     SWC = 438. mm     SMN =  0.0 kg N/ha
+Initial values over the soil depth ( 60 cm):     SWC = 221. mm     SMN =  0.0 kg N/ha
  inconsistency in initialising densitnitial and zrac0,  zrac will be limited to the layer where the roots are presents
  inconsistency in initialising densitnitial and zrac0,  zrac will be limited to the layer where the roots are presents
  inconsistency in initialising densitnitial and zrac0,  zrac will be limited to the layer where the roots are presents
@@ -1155,7 +1155,21 @@ Initial values over the soil depth (120 cm):     SWC = 438. mm     SMN =  0.0 kg
  Fruit biochemistry badly parameterised
  Fruit biochemistry badly parameterised
  Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
+ Fruit biochemistry badly parameterised
  Program end ... 
  -----------------------------------------------------------------------------------------
- Stics history file end End date: 2024/08/06-11:26:41
+ Stics history file end End date: 2024/08/07-11:52:09
  -----------------------------------------------------------------------------------------

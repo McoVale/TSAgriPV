@@ -19,6 +19,9 @@ rpy2 = "*"
 honeybee-grasshopper-radiance = "*"
 honeybee = "*"
 honeybee-radiance = "*"
+rhinoinside = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
 
 [dev-packages]
 ipykernel = "*"

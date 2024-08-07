@@ -19,7 +19,7 @@ VignePioGre_ini.xml
 :nomsol
 VignePioGre
 :fstation
-Mtp_sta.xml
+sta_sta.xml
 :fclim1
 weatherFile_TEST.2022
 :fclim2
@@ -29,7 +29,7 @@ weatherFile_TEST.2023
 :culturean
 0
 :fplt1
-vine_GRENAC_plt.xml
+vine_PINCC_plt.xml
 :ftec1
 VignePioGre_tec.xml
 :flai1

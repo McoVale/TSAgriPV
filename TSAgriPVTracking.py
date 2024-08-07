@@ -79,12 +79,12 @@ if __name__ == "__main__":
         print("Simulation d'irradiance au sol sous tous les angles effectuée !")
     else : print("Simulation d'irradiance au sol sautée.")
 
-    # Data Transformation
-    print("Début de la transformation des données")
-    if run_data_transformation():
-        print("Transformation des données effectuée !\nDocuments disponibles : tableau effacement, angle et irradiance en fonction des heures de l'année, dans le dossier ",PARAMS['PY_DATA_NAME'])
-    else :
-        print("Transformation des données non effectuée.")
+    # # Data Transformation
+    # print("Début de la transformation des données")
+    # if run_data_transformation():
+    #     print("Transformation des données effectuée !\nDocuments disponibles : tableau effacement, angle et irradiance en fonction des heures de l'année, dans le dossier ",PARAMS['PY_DATA_NAME'])
+    # else :
+    #     print("Transformation des données non effectuée.")
 
     # STICS analysis
     print("Début de la simulation agro ...")

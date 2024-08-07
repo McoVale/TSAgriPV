@@ -5,20 +5,20 @@
     <datefin>730</datefin>
     <finit>VignePioGre_ini.xml</finit>
     <nomsol>VignePioGre</nomsol>
-    <fstation>Mtp_sta.xml</fstation>
+    <fstation>sta_sta.xml</fstation>
     <fclim1>weatherFile_TEST.2022</fclim1>
     <fclim2>weatherFile_TEST.2023</fclim2>
     <culturean>0</culturean>
     <nbplantes>1</nbplantes>
     <codesimul>0</codesimul>
     <plante dominance="1">
-      <fplt>vine_GRENAC_plt.xml</fplt>
+      <fplt>vine_PINCC_plt.xml</fplt>
       <ftec>VignePioGre_tec.xml</ftec>
       <flai>null</flai>
       <fobs>null</fobs>
     </plante>
     <plante dominance="2">
-      <fplt>null</fplt>
+      <fplt>vine_PINCC_plt.xml</fplt>
       <ftec>null</ftec>
       <flai>null</flai>
       <fobs>null</fobs>

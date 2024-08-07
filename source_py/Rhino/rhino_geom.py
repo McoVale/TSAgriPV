@@ -420,6 +420,7 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
     """
     # Paths and settings
     path_resultsHB_AI = os.path.join('Annual_Irr_Results')
+    print(path_resultsHB_AI)
     settings_HB_AI = RecipeSettings(path_resultsHB_AI)
     settings_HB_AI_CT = RecipeSettings(path_resultsHB_AI+'_CT')
 
@@ -449,7 +450,7 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
     # Loop over angles and run simulations
     for index, angle in enumerate(angles):
         # Create panel geometry
-        print("loop irradiance index :",index)
+        print("Boucle simulation, angle numéro :",index+1)
         final_rotated_brep = create_panel_grid(GRID_SIZE, NB_PVP_RANGS, NB_PVP_RANGS, RAMPANT, LONGUEUR_PVP, HAUTEUR, ENTRAXE, LONGUEUR_PVP, ANGLE_ORIENTATION, angle,
                                                TYPE_PANEL, LARGEUR_BANDE, LARGEUR_AVIDE)
 

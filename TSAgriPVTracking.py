@@ -1,7 +1,7 @@
 from source_py import param_inputs as pi
 from source_py.Rhino import rhino_geom
 from source_py import data_transformation as dt
-from source_py import stics_from_r as stics
+#from source_py import stics_from_r as stics
 
 from ladybug.wea import Wea
 import numpy as np
@@ -19,7 +19,7 @@ R_STICS_WORKSPACE = 'R_related/Rproject/'
 def import_STICS_settings():
     df = pi.read_input_excel()
     parameters_excel = pi.transform_df_to_dict(df)
-    pi.modify_STICS_files(parameters_excel)
+    #pi.modify_STICS_files(parameters_excel)
     return parameters_excel
 
 def general_settings():
@@ -49,13 +49,13 @@ def run_data_transformation():
     dt.creer_daily_ratios(data_name=PARAMS['PY_DATA_NAME'])
     return True
 
-def run_stics_simu():
-    stics.gen_weatherfile_from_epw(PARAMS['PY_epw_name'],START_DATE)
-    res1 = stics.stics_simulation(source_dir="R_related/weatherFilesSource/", workspace_path=R_STICS_WORKSPACE,
-                           javastics_path= JAVASTICS_PATH, usm_name=PARAMS['PY_USM_NAME'],
-                           data_name=PARAMS['PY_DATA_NAME'])
-    print("Récoltes indicatives :\n Zone témoin : ",res1[0]," t/ha ; Zone d'étude avec panneaux : ", res1[1], " t/ha."      )
-    return True
+# def run_stics_simu():
+#     stics.gen_weatherfile_from_epw(PARAMS['PY_epw_name'],START_DATE)
+#     res1 = stics.stics_simulation(source_dir="R_related/weatherFilesSource/", workspace_path=R_STICS_WORKSPACE,
+#                            javastics_path= JAVASTICS_PATH, usm_name=PARAMS['PY_USM_NAME'],
+#                            data_name=PARAMS['PY_DATA_NAME'])
+#     print("Récoltes indicatives :\n Zone témoin : ",res1[0]," t/ha ; Zone d'étude avec panneaux : ", res1[1], " t/ha."      )
+#     return True
 
 if __name__ == "__main__":
 
@@ -79,16 +79,16 @@ if __name__ == "__main__":
         print("Simulation d'irradiance au sol sous tous les angles effectuée !")
     else : print("Simulation d'irradiance au sol sautée.")
 
-    # # Data Transformation
-    # print("Début de la transformation des données")
-    # if run_data_transformation():
-    #     print("Transformation des données effectuée !\nDocuments disponibles : tableau effacement, angle et irradiance en fonction des heures de l'année, dans le dossier ",PARAMS['PY_DATA_NAME'])
-    # else :
-    #     print("Transformation des données non effectuée.")
+    # Data Transformation
+    print("Début de la transformation des données")
+    if run_data_transformation():
+        print("Transformation des données effectuée !\nDocuments disponibles : tableau effacement, angle et irradiance en fonction des heures de l'année, dans le dossier ",PARAMS['PY_DATA_NAME'])
+    else :
+        print("Transformation des données non effectuée.")
 
-    # STICS analysis
-    print("Début de la simulation agro ...")
-    if run_stics_simu() :
-        print("Simulation STICS effectuée, résultats STICS disponibles dans le dossier results.\n Veuillez les enregistrer avant de lancer une nouvelle simulation pour ne pas les perdre.")
+    # # STICS analysis
+    # print("Début de la simulation agro ...")
+    # if run_stics_simu() :
+    #     print("Simulation STICS effectuée, résultats STICS disponibles dans le dossier results.\n Veuillez les enregistrer avant de lancer une nouvelle simulation pour ne pas les perdre.")
     
     print("Fin de l'application, veuillez fermer cette fenêtre.")

@@ -26,7 +26,6 @@ from ladybug_geometry.geometry3d.plane import Plane
 from ladybug_rhino.togeometry import to_mesh3d, to_face3d, to_vector3d
 from honeybee_radiance.sensorgrid import SensorGrid
 from honeybee.typing import clean_and_id_string
-#from lbt_recipes.recipe import Recipe
 from lbt_recipes.settings import RecipeSettings
 
 from .rhino_func import longest_list, to_gridded_mesh3d_perso
@@ -419,8 +418,7 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
         None
     """
     # Paths and settings
-    path_resultsHB_AI = os.path.join('Annual_Irr_Results')
-    print(path_resultsHB_AI)
+    path_resultsHB_AI = 'Annual_Irr_Results'
     settings_HB_AI = RecipeSettings(path_resultsHB_AI)
     settings_HB_AI_CT = RecipeSettings(path_resultsHB_AI+'_CT')
 

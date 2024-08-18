@@ -392,7 +392,7 @@ def convert_to_grid(_positions, _name_ = '', _directions_ = [], mesh_ = None, ba
 
     return grid
 
-def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINESSE, GRID_SIZE, ENTRAXE, RAMPANT, NB_PVP_RANGS, ANGLE_ORIENTATION, TYPE_PANEL, LARGEUR_BANDE, LARGEUR_AVIDE, LONGUEUR_PVP, HAUTEUR):
+def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINESSE, GRID_SIZE, ENTRAXE, RAMPANT, NB_PVP_RANGS, ANGLE_ORIENTATION, TYPE_PANEL, LARGEUR_BANDE, LARGEUR_AVIDE, LONGUEUR_PVP, HAUTEUR, cult):
     """
     Run annual irradiance simulations for a range of panel tilt angles and export the results to an Excel file.
     
@@ -413,20 +413,25 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
         LARGEUR_AVIDE: Width of the panel slot.
         LONGUEUR_PVP: Length of the panels.
         HAUTEUR: Height of the panels.
+        cult: Type of culture studied
     
     Returns:
         None
     """
+    cultBool = True
+    if cult == 3:
+        cultBool = False
     # Paths and settings
-    path_resultsHB_AI = 'Annual_Irr_Results'
+    path_resultsHB_AI = os.path.join(os.getcwd(),'Annual_Irr_Results')
     settings_HB_AI = RecipeSettings(path_resultsHB_AI)
     settings_HB_AI_CT = RecipeSettings(path_resultsHB_AI+'_CT')
+    print(settings_HB_AI_CT)
 
     ### Run simulation with CONTROL area -------------------------------------------
     # Create classic geometry
     panels_CT = rg.Brep()
     panels_CT.Append(create_surface(40, 40, 0.1, 0.1).ToBrep())
-    ground_CT = create_sensor_grid(ANGLE_ORIENTATION, 40, 40, culture=True)
+    ground_CT = create_sensor_grid(ANGLE_ORIENTATION, 40, 40, culture=cultBool)
 
     # Convert to Model for control area
     panels_CT_faces = brep_to_face([panels_CT])
@@ -440,7 +445,7 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
 
     ### Run simulation with STUDY area -------------------------------------------
     # Create measurement grid
-    ground = create_sensor_grid(ANGLE_ORIENTATION, None, None, culture=True, 
+    ground = create_sensor_grid(ANGLE_ORIENTATION, None, None, culture=cultBool, 
                                     entraxe=ENTRAXE, rampant=RAMPANT, nb_lignes=NB_PVP_RANGS, grid_size=GRID_SIZE)
     ground_grid = brep_to_pts_mesh(ground[0], _grid_size=FINESSE)  # BREP TO POINTS
     ground_grid_sensor = convert_to_grid(ground_grid, 'ID_1')
@@ -459,6 +464,7 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
 
         # Run annual irradiance
         annual_irradiance(_model=panel_model_gridded, _wea=wea, run_settings_=settings_HB_AI)
+        print("irr")
 
         # Export data to container
         sun_up_hours = pd.read_csv('Annual_Irr_Results/annual_irradiance/results/total/sun-up-hours.txt', header=None).squeeze()

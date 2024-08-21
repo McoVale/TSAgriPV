@@ -392,14 +392,14 @@ def convert_to_grid(_positions, _name_ = '', _directions_ = [], mesh_ = None, ba
 
     return grid
 
-def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINESSE, GRID_SIZE, ENTRAXE, RAMPANT, NB_PVP_RANGS, ANGLE_ORIENTATION, TYPE_PANEL, LARGEUR_BANDE, LARGEUR_AVIDE, LONGUEUR_PVP, HAUTEUR, cult):
+def run_annual_irradiance_simulation(angles, wea, bdd_irr, hoys, output_path, FINESSE, GRID_SIZE, ENTRAXE, RAMPANT, NB_PVP_RANGS, ANGLE_ORIENTATION, TYPE_PANEL, LARGEUR_BANDE, LARGEUR_AVIDE, LONGUEUR_PVP, HAUTEUR, cult):
     """
     Run annual irradiance simulations for a range of panel tilt angles and export the results to an Excel file.
     
     Args:
         angles: List of tilt angles to simulate.
         wea: A Wea object or path to a .wea or .epw file.
-        tab_1: DataFrame to store the results.
+        bdd_irr: DataFrame to store the results.
         hoys: List of hours of the year to be considered in the results.
         output_path: Path to the output Excel file where results will be saved.
         FINESSE: Grid size for mesh resolution.
@@ -474,11 +474,11 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
         ill_data_mean = ill_data.mean()
 
         angle_txt = str(angle)
-        tab_1[angle_txt] = 0
+        bdd_irr[angle_txt] = 0
         for hour in hoys:
             if hour in sun_up_hours.values:
                 index = sun_up_hours[sun_up_hours == hour].index[0]
-                tab_1.at[hour, angle_txt] = ill_data_mean[index]
+                bdd_irr.at[hour, angle_txt] = ill_data_mean[index]
 
         # Clean up
         if os.path.exists(path_resultsHB_AI):
@@ -495,11 +495,11 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
     ill_data_mean = ill_data.mean()
 
     CT_txt = 'temoin'
-    tab_1[CT_txt] = 0
+    bdd_irr[CT_txt] = 0
     for hour in hoys:
         if hour in sun_up_hours.values:
             index = sun_up_hours[sun_up_hours == hour].index[0]
-            tab_1.at[hour, CT_txt] = ill_data_mean[index]
+            bdd_irr.at[hour, CT_txt] = ill_data_mean[index]
 
     # Clean up control area folder
     if os.path.exists(path_resultsHB_AI + '_CT'):
@@ -510,5 +510,5 @@ def run_annual_irradiance_simulation(angles, wea, tab_1, hoys, output_path, FINE
 
     # Export results to Excel
     print(output_path)
-    tab_1.to_excel(output_path, index=False, header=True)
+    bdd_irr.to_excel(output_path, index=False, header=True)
 ##

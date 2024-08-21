@@ -11,16 +11,16 @@ PARAMS = {}
 HOYS = np.arange(0, 8760)
 START_DATE = pd.Timestamp('2022-01-01')
 timestamps = [START_DATE + pd.Timedelta(hours=int(hour)) for hour in HOYS]
-TAB_1 = pd.DataFrame()
-TAB_1['Month-Day-Hour'] = [ts.strftime('%m-%d-%H') for ts in timestamps]
+bdd_irr = pd.DataFrame()
+bdd_irr['Month-Day-Hour'] = [ts.strftime('%m-%d-%H') for ts in timestamps]
 JAVASTICS_PATH = 'JavaSTICS/'
 R_STICS_WORKSPACE = 'R_related/Rproject/'
 
 def import_general_settings():
-    df = pi.read_input_excel()
-    parameters_excel = pi.transform_df_to_dict(df)
-    pi.modify_STICS_files(parameters_excel)
-    return parameters_excel
+    params_non_dict = pi.read_input_excel()
+    parameters_dict = pi.transform_df_to_dict(params_non_dict)
+    pi.modify_STICS_files(parameters_dict)
+    return parameters_dict
 
 def general_setup():
     pi.settings_dirs(PARAMS['PY_DATA_NAME'])
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     print(PARAMS['PY_PATH_BDD_IRR'])
     if PARAMS['PY_DO_RHINO_SIM'] == True :
         print("Simulation d'irradiance au sol en cours ...")
-        rhino_geom.run_annual_irradiance_simulation(angles=PARAMS['PY_LIST_ANGLES'], wea=PARAMS['PY_wea'],tab_1=TAB_1,hoys=HOYS,
+        rhino_geom.run_annual_irradiance_simulation(angles=PARAMS['PY_LIST_ANGLES'], wea=PARAMS['PY_wea'],tab_1=bdd_irr,hoys=HOYS,
                                                     output_path=PARAMS['PY_PATH_BDD_IRR'],FINESSE=PARAMS['PY_FINESSE'],GRID_SIZE=PARAMS['PY_GRID_SIZE'],
                                                     ENTRAXE=PARAMS['PY_ENTRAXE'],RAMPANT=PARAMS['PY_RAMPANT'],NB_PVP_RANGS=PARAMS['PY_NB_PVP_RANGS'],
                                                     ANGLE_ORIENTATION=PARAMS['PY_ANGLE_ORIENTATION'],TYPE_PANEL=PARAMS['PY_TYPE_PANEL'],
@@ -86,9 +86,10 @@ if __name__ == "__main__":
     else :
         print("Transformation des données non effectuée.")
 
-    # # STICS analysis
+    # STICS analysis
     print("Début de la simulation agro ...")
-    if run_stics_simu() :
-        print("Simulation STICS effectuée, résultats STICS disponibles dans le dossier results.\n Veuillez les enregistrer avant de lancer une nouvelle simulation pour ne pas les perdre.")
-    
+    if PARAMS['PY_DO_STICS_SIM'] == True :
+        if run_stics_simu() :
+            print("Simulation STICS effectuée, résultats STICS disponibles dans le dossier results.\n Veuillez les enregistrer avant de lancer une nouvelle simulation pour ne pas les perdre.")
+    else : print("Simulation agronomique sautée.")
     print("Fin de l'application, veuillez fermer cette fenêtre.")
